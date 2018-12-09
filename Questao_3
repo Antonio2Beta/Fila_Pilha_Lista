@@ -5,10 +5,43 @@
 No* Busca(No* L, int k)
 {
   No* p;
-  for (p = L->prox; p!= NULL; p = p->prox)
-    if (p->info == k) return p;
+  for (p = L->prox; p!= NULL; p = p->prox) //enquanto p for diferente de NULL, p recebe o próximo elemento
+    if (p->info == k) return p; // se o campo info de p for igual ao elemento buscado, imprime o elemento
    return NULL;
  }
 
 // b) Busca elementos na LDE
 
+int BuscarDadoLD(Dupla *LD, int k)
+{
+  int achou=0;
+  int pos=1;
+ No *copia;
+ if(L_Vazia(LD)) cout<<"Lista vazia!"<<endl; //imprime "Lista vaiza" caso a lista esteja vazia
+ else
+  copia = LD->Inicio; //copia recebe o início da lista
+  while(copia->prox != NULL) //enquanto o próximo elemento for diferente de NULL
+  { if(copia->info == k) achou = pos; // se o campo info por igual a k (elemento que está sendo procurado), achou vai receber a posição do elemento
+    else
+    pos++; //caso contrário, incrementa um à variável pos
+   copia = copia->prox; //copia recebe o próximo elemento
+   }
+  }
+ return achou; // retorna o elemento encontrado
+ }
+ 
+ // c) Impressão de dados na LDE
+ 
+ void ImprimeLD(Dupla *LD)
+ { No *copia;
+    copia = LD->Inicio;
+    int cont=1;
+    if(L_Vazia(LD)) cout << "Lista vazia" << endl;
+    else
+    while (copia!=NULL)
+    {
+      cout<<"Lista["<<cont<<"] = "<<copia->info<<endl;
+      copia = copia->prox;
+      cont++;
+      }
+    }
